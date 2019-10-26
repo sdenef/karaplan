@@ -24,7 +24,7 @@
     <span class="badge badge-secondary" title="Duration">{{ song.duration | duration }}</span>
   </div>
   <div class="col-auto d-none d-sm-block ml-2">
-    <app-song-actions [song]="song" [showVotes]="showVotes" [showComments]="showComments" [showPlaylists]="showPlaylists" [showRemove]="showRemove"
+    <app-song-actions [song]="song" [playlist]="playlist" [showVotes]="showVotes" [showComments]="showComments" [showPlaylists]="showPlaylists" [showRemove]="showRemove"
       (voteAdded)="voteAdded.emit($event)" (voteRemoved)="voteRemoved.emit($event)" (commentAdded)="commentAdded.emit($event)" (commentRemoved)="commentRemoved.emit($event)"
       (playlistAdded)="playlistAdded.emit($event)" (playlistRemoved)="playlistRemoved.emit($event)" (songRemoved)="songRemoved.emit($event)">
     </app-song-actions>

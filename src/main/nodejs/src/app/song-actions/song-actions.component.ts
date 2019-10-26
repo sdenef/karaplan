@@ -20,6 +20,7 @@ import { PlaylistModalComponent } from '../playlist-modal/playlist-modal.compone
 export class SongActionsComponent implements OnInit, OnChanges {
 
   @Input() song: Song;
+  @Input() playlist: Playlist;
   @Input() showVotes: boolean = true;
   @Input() showComments: boolean = true;
   @Input() showPlaylists: boolean = true;

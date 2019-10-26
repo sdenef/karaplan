@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Song } from '../models/song';
 import { SongVote } from '../models/song-vote';
 import { SongComment } from '../models/song-comment';
+import { Playlist } from '../models/playlist';
 import { PlaylistSong } from '../models/playlist-song';
 
 @Component({
@@ -13,6 +14,7 @@ import { PlaylistSong } from '../models/playlist-song';
 export class SongListComponent implements OnInit {
 
   @Input() songs: Song[] | PlaylistSong[];
+  @Input() playlist: Playlist;
   @Input() showDuration: boolean = false;
   @Input() showVotes: boolean = true;
   @Input() showComments: boolean = true;

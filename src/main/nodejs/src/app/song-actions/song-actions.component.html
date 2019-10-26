@@ -46,17 +46,22 @@
 <div ngbDropdown #playlistDropdown="ngbDropdown" [autoClose]="'outside'" placement="bottom-left bottom bottom-right top-left top top-right" container="body" class="d-inline-block" (openChange)="onPlaylistOpen()" *ngIf="showPlaylists">
   <button type="button" class="btn btn-outline-primary mx-1" (click)="$event.stopPropagation()" ngbDropdownToggle [disabled]="loading" title="Add to playlist">
     <i class="fas fa-list"></i>
-    <span class="badge badge-primary ml-1" *ngIf="song.playlists">{{ song.playlistsCount }}</span>
+    <span class="badge badge-primary ml-1" *ngIf="song.playlists">
+        <span *ngIf="playlist">{{ song.playlistsCount - 1 }}</span>
+        <span *ngIf="!playlist">{{ song.playlistsCount }}</span>
+    </span>
   </button>
   <div class="dropdown-menu shadow" ngbDropdownMenu>
     <button type="button" class="dropdown-item" ngbDropdownItem *ngIf="!playlists">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       Loading ...
     </button>
-    <button type="button" class="dropdown-item" ngbDropdownItem *ngFor="let playlist of playlists; trackBy: trackByPlaylistId" (click)="togglePlaylist(playlist)" [disabled]="playlist.readOnly">
-      <i class="far fa-square mr-1" *ngIf="!playlist.isSelected"></i>
-      <i class="far fa-check-square mr-1" *ngIf="playlist.isSelected"></i>
-      {{ playlist.name }}
+    <button type="button" class="dropdown-item" ngbDropdownItem *ngFor="let aplaylist of playlists; trackBy: trackByPlaylistId" (click)="togglePlaylist(aplaylist)" [disabled]="aplaylist.readOnly">
+      <div *ngIf="aplaylist.id != playlist?.id">
+          <i class="far fa-square mr-1" *ngIf="!aplaylist.isSelected"></i>
+          <i class="far fa-check-square mr-1" *ngIf="aplaylist.isSelected"></i>
+          {{ aplaylist.name }}
+          </div>
     </button>
     <div class="dropdown-divider" *ngIf="!playlists || playlists.length > 0"></div>
     <button type="button" class="dropdown-item" ngbDropdownItem (click)="playlistDropdown.close(); createPlaylist()"><i class="fas fa-plus mr-1"></i> New playlist</button>
